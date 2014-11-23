@@ -26,3 +26,7 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Transformed JSX
+react/build
+public/js/behavior.js
