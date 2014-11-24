@@ -55,10 +55,11 @@ app.get('/api/game/:game_id', function(req, res) {
 })
 
 
-
-
 // render react routes on server
 app.use(function(req, res, next) {
+  if(req.query.q) {
+    res.redirect('/search/' + req.query.q)
+  }  
   try {
     reactAsync.renderToStringAsync(reactApp.routes({path: req.path}), function(err, markup) {
       if(err) {
