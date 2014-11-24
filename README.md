@@ -7,6 +7,5 @@ Isomorphic application demo using react, express, superagent and the Giant Bomb 
 TODO
 -----
 
-- Search Functionality
-- Game Detail
-- Release Detail
+X Search Functionality
+X Game Detail

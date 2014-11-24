@@ -6,7 +6,6 @@ var Router = require('react-router-component')
 
 var Search = require('./search')
 var Game = require('./game')
-var Release = require('./release')
 
 var Locations = Router.Locations
 var Location = Router.Location
@@ -25,14 +24,13 @@ var App = React.createClass({
         </head>
         <body>
         <div className="nav">
-          <Link href="/">Search</Link> | <Link href="/game">Game</Link> | <Link href="/release">Release</Link>
+          <Link href="/">Search</Link>
         </div>
         <div className="main">
         <CaptureClicks>
           <Locations path={this.props.path}>
             <Location path="/" handler={Search} />
             <Location path="/game/:game_id" handler={Game} />
-            <Location path="/release" handler={Release} />
             <Location path="/search/:query" handler={Search} />
           </Locations>
         </CaptureClicks>
