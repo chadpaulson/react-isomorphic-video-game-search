@@ -19,14 +19,13 @@ var App = React.createClass({
 
   getInitialState: function() {
     if (typeof window === 'undefined') {
-      return {
-        entryPath: this.props.path
-      }
+      var entryPath = this.props.path
     } else {
-      return {
-        entryPath: window.location.pathname
-      }
+      var entryPath = window.location.pathname
     }
+    return {
+      entryPath: entryPath
+    }    
   },
 
   searchGames: function(query) {
@@ -47,7 +46,7 @@ var App = React.createClass({
         <CaptureClicks>
           <Locations ref="router" path={this.props.path}>
             <Location path="/" handler={Home} />
-            <Location path="/game/:game_id" handler={Game} />
+            <Location path="/game/:game_id/:game_slug" handler={Game} />
             <Location path="/search/:query" handler={SearchResults} />
           </Locations>
         </CaptureClicks>

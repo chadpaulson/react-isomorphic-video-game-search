@@ -5,6 +5,7 @@ var React = require('react')
 var Reflux = require('reflux')
 var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
+var slug = require('to-slug-case')
 
 var appActions = require('./actions')
 var searchStore = require('./stores/searchStore')
@@ -14,26 +15,18 @@ var SearchResults = React.createClass({
 
   mixins: [reactAsync.Mixin, Reflux.ListenerMixin],
 
-  getInitialStateAsync: function(cb) {
-    if(this.props.query) {
-      appActions.searchUpdate(this.props.query)
-      searchStore.listen(function(data) {
-        try {
-          return cb(null, {
-            searchString: data.searchString,
-            searchResults: data.searchResults
-          })
-        } catch(err) {
-          console.log(err)
-        }
-      })      
-    } else {
-      return cb(null, {
-        searchString: '',
-        searchResults: [],
-      })      
-    }
-
+  getInitialStateAsync: function(cb) {    
+    appActions.searchUpdate(this.props.query)
+    searchStore.listen(function(data) {
+      try {
+        return cb(null, {
+          searchString: data.searchString,
+          searchResults: data.searchResults
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   },  
 
   componentDidMount: function() {
@@ -58,12 +51,12 @@ var SearchResults = React.createClass({
       var results = []
       this.state.searchResults.forEach(function(game) {
         if(game.image) {
-          var gameURL = '/game/' + game.id
+          var gameURL = '/game/' + game.id + '/' + slug(game.name)
           results.push(<div className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
         }
       })
     } else {
-      var results = <div className="no-results">No Results</div>
+      var results = <div className="no-results">No Games Matching '{this.state.searchString}'</div>
     }
     return (
       <div className="search-results clearfix">
