@@ -21,6 +21,11 @@ var searchStore = Reflux.createStore({
             searchString: searchString,
             searchResults: res.body.results
           })
+        } else {
+          self.trigger({
+            searchString: searchString,
+            searchResults: []
+          })
         }
     })
   }
