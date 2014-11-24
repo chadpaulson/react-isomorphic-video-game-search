@@ -1,7 +1,21 @@
 body {
-  background-color: rgb(242, 242, 242);
+  background-color: #FCFCFA;
   font: 800 1em/1.38 'Merriweather Sans';
   color: rgb(46, 46, 46);
+}
+
+a {
+  color: #2C171C;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #D6246C;
+  text-decoration: underline;
+}
+
+input {
+  font-family:Helvetica, Arial;
 }
 
 .search-home {
@@ -14,7 +28,7 @@ body {
   width: 100%;
   height: 233px;
   margin: auto;
-  background-color: rgb(43, 43, 43);
+  background-color: #2C171C;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -39,7 +53,7 @@ body {
   width: 70%;
   height: 41px;
   padding: 0 10px;
-  background-color: rgb(242, 242, 242);
+  background-color: #FCFCFA;
   font-size: 2.063em;
   line-height: 1.38;
   color: rgb(0, 0, 0);
@@ -53,17 +67,17 @@ body {
   width: 22%;
   height: 41px;
   margin-left: 3.5%;
+  border:none;
   border-radius: 6px;
-  background-color: rgb(194, 194, 194);
+  background-color: #FCFCFA;
   font-size: 1em;
   line-height: 1.38;
   text-align: center;
   text-transform: uppercase;
-  color: rgb(46, 46, 46);
+  color: #00917E;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
-
 
 .search-blurred {
   position: absolute;
@@ -74,7 +88,8 @@ body {
   width: 100%;
   height: 75px;
   margin: 0 auto;
-  background-color: rgb(43, 43, 43);
+  background-color: #00917E;
+  border-bottom: 3px solid #BAE65C;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -99,13 +114,14 @@ body {
   width: 22%;
   height: 41px;
   margin-left: 3.5%;
+  border:none;
   border-radius: 6px;
-  background-color: rgb(194, 194, 194);
-  font-size: 1em;
-  line-height: 1.38;
+  background-color: #FCFCFA;
+  font-size: 0.8em;
+  line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
-  color: rgb(46, 46, 46);
+  color: #D6246C;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -116,10 +132,10 @@ body {
   width: 70%;
   height: 41px;
   padding: 0 10px;
-  background-color: rgb(242, 242, 242);
-  font-size: 2em;
-  line-height: 1.38;
-  color: rgb(0, 0, 0);
+  background-color: #FCFCFA;
+  font-size: 1em;
+  line-height: 1.2;
+  color: rgb(163, 163, 163);
   transition: .3s ease;
   -webkit-transition: .3s ease;
 }
@@ -134,7 +150,8 @@ body {
   width: 100%;
   height: 133px;
   margin: 0 auto;
-  background-color: rgb(43, 43, 43);
+  background-color: #2C171C;
+  border-top: 6px solid #D6246C;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -146,7 +163,7 @@ body {
   left: 0;
   right: 0;
   z-index: 2;
-  width: 58.125%;
+  width: 60%;
   height: 42px;
   margin: auto;
   transition: .3s ease;
@@ -156,16 +173,17 @@ body {
 .search-focused .search-submit {
   display: block;
   float: left;
-  width: 21.875%;
+  width: 22%;
   height: 41px;
-  margin-left: 3.57527%;
+  margin-left: 3.5%;
+  border:none;  
   border-radius: 6px;
-  background-color: rgb(194, 194, 194);
+  background-color: #FCFCFA;
   font-size: 1em;
   line-height: 1.38;
   text-align: center;
   text-transform: uppercase;
-  color: rgb(46, 46, 46);
+  color: #D6246C;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -173,11 +191,11 @@ body {
 .search-focused .search-input {
   display: block;
   float: left;
-  width: 70.1923076923%;
+  width: 70%;
   height: 41px;
   padding: 0 10px;
-  background-color: rgb(242, 242, 242);
-  font-size: 2.063em;
+  background-color: #FCFCFA;
+  font-size: 1.6em;
   line-height: 1.38;
   color: rgb(0, 0, 0);
   transition: .3s ease;
@@ -226,7 +244,20 @@ body {
 
 .no-results {
   font-size: 2em;
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
+  padding-top:50px;
   text-align: center;
+}
+
+.github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index:200;
+}
+
+.search-loading {
+  margin-left:23px;
 }
