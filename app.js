@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/api/search/:query', function(req, res) {
   http.get({
     host: appConfig.API_HOST,
-    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resource_type=game&query=' + req.params.query + '&field_list=name,image'
+    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resource_type=game&query=' + req.params.query + '&field_list=name,image,id'
   }, function(apiResponse) {
     var chunks = []
     apiResponse.on('data', function(chunk) {
@@ -37,6 +37,23 @@ app.get('/api/search/:query', function(req, res) {
     })
   })
 })
+
+app.get('/api/game/:game_id', function(req, res) {
+  http.get({
+    host: appConfig.API_HOST,
+    path: '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json'
+  }, function(apiResponse) {
+    var chunks = []
+    apiResponse.on('data', function(chunk) {
+      chunks.push(chunk)
+    }).on('end', function() {
+      var body = Buffer.concat(chunks)
+      res.set('Content-Type', 'application/json')
+      res.send(body)
+    })
+  })
+})
+
 
 
 
