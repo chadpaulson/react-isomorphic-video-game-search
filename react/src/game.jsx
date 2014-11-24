@@ -23,6 +23,12 @@ var Game = React.createClass({
     appActions.loadGame(this.props.game_id)
   },
 
+  componentWillReceiveProps: function(nextProps) {
+    if(this.props.game_id != nextProps.game_id && typeof(nextProps.game_id) !== "undefined") {
+      appActions.loadGame(nextProps.game_id)
+    }
+  },
+
   refreshGame: function(data) {
     this.setState({
       game: data
