@@ -3,6 +3,7 @@
 
 var React = require('react')
 var Reflux = require('reflux')
+var Link = require('react-router-component').Link
 
 var appActions = require('./actions')
 var searchStore = require('./stores/searchStore')
@@ -48,7 +49,8 @@ var Search = React.createClass({
     var results = []
     this.state.searchResults.forEach(function(game) {
       if(game.image) {
-        results.push(<div><img src={game.image.icon_url} /> <h2>{game.name}</h2></div>)
+        var gameURL = '/game/' + game.id
+        results.push(<div><img src={game.image.icon_url} /> <Link href={gameURL}><h2>{game.name}</h2></Link></div>)
       }
     })
     return (

@@ -31,7 +31,7 @@ var App = React.createClass({
         <CaptureClicks>
           <Locations path={this.props.path}>
             <Location path="/" handler={Search} />
-            <Location path="/game" handler={Game} />
+            <Location path="/game/:game_id" handler={Game} />
             <Location path="/release" handler={Release} />
             <Location path="/search/:query" handler={Search} />
           </Locations>
