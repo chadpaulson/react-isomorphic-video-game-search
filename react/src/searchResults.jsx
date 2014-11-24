@@ -1,0 +1,76 @@
+/** @jsx React.DOM */
+'use strict'
+
+var React = require('react')
+var Reflux = require('reflux')
+var reactAsync = require('react-async')
+var Link = require('react-router-component').Link
+
+var appActions = require('./actions')
+var searchStore = require('./stores/searchStore')
+
+
+var SearchResults = React.createClass({
+
+  mixins: [reactAsync.Mixin, Reflux.ListenerMixin],
+
+  getInitialStateAsync: function(cb) {
+    if(this.props.query) {
+      appActions.searchUpdate(this.props.query)
+      searchStore.listen(function(data) {
+        try {
+          return cb(null, {
+            searchString: data.searchString,
+            searchResults: data.searchResults
+          })
+        } catch(err) {
+          console.log(err)
+        }
+      })      
+    } else {
+      return cb(null, {
+        searchString: '',
+        searchResults: [],
+      })      
+    }
+
+  },  
+
+  componentDidMount: function() {
+    this.listenTo(searchStore, this.refreshSearch)
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    if(this.props.query != nextProps.query && typeof(nextProps.query) !== "undefined") {
+      appActions.searchUpdate(nextProps.query)
+    }
+  },
+
+  refreshSearch: function(data) {
+    this.setState({
+      searchString: data.searchString,
+      searchResults: data.searchResults
+    })
+  },
+
+  render: function() {
+    var results = []
+    this.state.searchResults.forEach(function(game) {
+      if(game.image) {
+        var gameURL = '/game/' + game.id
+        results.push(<div><img src={game.image.icon_url} /> <Link href={gameURL}><h2>{game.name}</h2></Link></div>)
+      }
+    })
+    return (
+      <div>
+        <div>
+          {results}
+        </div>
+      </div>
+    )
+  }
+
+})
+
+
+module.exports = SearchResults

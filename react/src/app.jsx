@@ -5,7 +5,9 @@ var React = require('react')
 var Router = require('react-router-component')
 
 var Search = require('./search')
+var SearchResults = require('./searchResults')
 var Game = require('./game')
+var Home = require('./home')
 
 var Locations = Router.Locations
 var Location = Router.Location
@@ -15,6 +17,10 @@ var Link = require('react-router-component').Link
 
 var App = React.createClass({
 
+  searchGames: function(query) {
+    this.refs.router.navigate('/search/' + encodeURI(query))
+  },
+
   render: function() {
     return (
       <html>
@@ -23,15 +29,13 @@ var App = React.createClass({
           <link rel="stylesheet" type="text/css" href="/css/style.css" />
         </head>
         <body>
-        <div className="nav">
-          <Link href="/">Search</Link>
-        </div>
+        <Search onSearch={this.searchGames} />
         <div className="main">
         <CaptureClicks>
-          <Locations path={this.props.path}>
-            <Location path="/" handler={Search} />
+          <Locations ref="router" path={this.props.path}>
+            <Location path="/" handler={Home} />
             <Location path="/game/:game_id" handler={Game} />
-            <Location path="/search/:query" handler={Search} />
+            <Location path="/search/:query" handler={SearchResults} />
           </Locations>
         </CaptureClicks>
         </div>

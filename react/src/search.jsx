@@ -3,56 +3,31 @@
 
 var React = require('react')
 var Reflux = require('reflux')
-var reactAsync = require('react-async')
-var Link = require('react-router-component').Link
 
-var appActions = require('./actions')
 var searchStore = require('./stores/searchStore')
 
 
 var Search = React.createClass({
 
-  mixins: [reactAsync.Mixin, Reflux.ListenerMixin],
+  mixins: [Reflux.ListenerMixin],
 
-  getInitialStateAsync: function(cb) {
-    if(this.props.query) {
-      appActions.searchUpdate(this.props.query)
-      searchStore.listen(function(data) {
-        try {
-          return cb(null, {
-            searchString: data.searchString,
-            searchResults: data.searchResults
-          })
-        } catch(err) {
-          console.log(err)
-        }
-      })      
-    } else {
-      return cb(null, {
-        searchString: '',
-        searchResults: []
-      })      
+  getInitialState: function() {
+    return {
+      searchString: '',
+      loading: false
     }
-
-  },  
-
-  componentDidMount: function() {
-    this.listenTo(searchStore, this.refreshSearch)
   },
 
-  refreshSearch: function(data) {
-    this.setState({
-      searchString: data.searchString,
-      searchResults: data.searchResults
-    })
+  componentDidMount: function() {
+    this.listenTo(searchStore, this.stopLoading)
   },
 
   handleSubmit: function(e) {
     e.preventDefault()
-    if(this.state.searchString) {
-      window.history.pushState({},'','/search/' + encodeURI(this.state.searchString))
-      appActions.searchUpdate(this.state.searchString)
-    }
+    this.setState({
+      loading: true
+    })
+    this.props.onSearch(this.state.searchString)
   },
 
   handleChange: function(e) {
@@ -61,23 +36,25 @@ var Search = React.createClass({
     })
   },
 
-  render: function() {
-    var results = []
-    this.state.searchResults.forEach(function(game) {
-      if(game.image) {
-        var gameURL = '/game/' + game.id
-        results.push(<div><img src={game.image.icon_url} /> <Link href={gameURL}><h2>{game.name}</h2></Link></div>)
-      }
+  stopLoading: function() {
+    this.setState({
+      loading: false
     })
+  },
+
+  render: function() {
+    var searchContext
+    if(this.state.loading) {
+      searchContext = <img src="/images/spinner.gif" />
+    } else {
+      searchContext = <input type="submit" value="search" />
+    }
     return (
       <div>
         <form method="get" action="/" onSubmit={this.handleSubmit}>
-          <input type="text" name="q" onChange={this.handleChange} />
-          <input type="submit" value="search" />
+          <input type="text" name="q" onChange={this.handleChange} value={this.state.searchString} />
+          {searchContext}
         </form>
-        <div>
-          {results}
-        </div>
       </div>
     )
   }
