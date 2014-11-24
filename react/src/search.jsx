@@ -12,8 +12,14 @@ var Search = React.createClass({
   mixins: [Reflux.ListenerMixin],
 
   getInitialState: function() {
+    if(this.props.entryPath == '/') {
+      var defaultClass = 'search-home'
+    } else {
+      var defaultClass = 'search-blurred'
+    }
     return {
       searchString: '',
+      defaultClass: defaultClass,
       loading: false
     }
   },
@@ -38,7 +44,8 @@ var Search = React.createClass({
 
   stopLoading: function() {
     this.setState({
-      loading: false
+      loading: false,
+      defaultClass: 'search-blurred'
     })
   },
 
@@ -47,12 +54,12 @@ var Search = React.createClass({
     if(this.state.loading) {
       searchContext = <img src="/images/spinner.gif" />
     } else {
-      searchContext = <input type="submit" value="search" />
+      searchContext = <button className="search-submit" type="submit">search</button>
     }
     return (
-      <div>
-        <form method="get" action="/" onSubmit={this.handleSubmit}>
-          <input type="text" name="q" onChange={this.handleChange} value={this.state.searchString} />
+      <div className={this.state.defaultClass}>
+        <form method="get" action="/" className="search-form" onSubmit={this.handleSubmit}>
+          <input type="text" className="search-input" name="q" onChange={this.handleChange} value={this.state.searchString} />
           {searchContext}
         </form>
       </div>

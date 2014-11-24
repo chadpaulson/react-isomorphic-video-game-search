@@ -17,6 +17,18 @@ var Link = require('react-router-component').Link
 
 var App = React.createClass({
 
+  getInitialState: function() {
+    if (typeof window === 'undefined') {
+      return {
+        entryPath: this.props.path
+      }
+    } else {
+      return {
+        entryPath: window.location.pathname
+      }
+    }
+  },
+
   searchGames: function(query) {
     this.refs.router.navigate('/search/' + encodeURI(query))
   },
@@ -26,11 +38,12 @@ var App = React.createClass({
       <html>
         <head>
           <title>Video Game Search</title>
+          <link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:800" rel="stylesheet" type="text/css" />
+          <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" />
           <link rel="stylesheet" type="text/css" href="/css/style.css" />
         </head>
         <body>
-        <Search onSearch={this.searchGames} />
-        <div className="main">
+        <Search onSearch={this.searchGames} entryPath={this.state.entryPath} />
         <CaptureClicks>
           <Locations ref="router" path={this.props.path}>
             <Location path="/" handler={Home} />
@@ -38,7 +51,6 @@ var App = React.createClass({
             <Location path="/search/:query" handler={SearchResults} />
           </Locations>
         </CaptureClicks>
-        </div>
         <script type="text/javascript" src="/js/behavior.js"></script>
         </body>
       </html>
