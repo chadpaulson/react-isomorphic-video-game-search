@@ -29,6 +29,8 @@ body {
   width: 60%;
   height: 42px;
   margin: auto;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
 }
 
 .search-home .search-input {
@@ -41,6 +43,8 @@ body {
   font-size: 2.063em;
   line-height: 1.38;
   color: rgb(0, 0, 0);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
 }  
 
 .search-home .search-submit {
@@ -56,6 +60,8 @@ body {
   text-align: center;
   text-transform: uppercase;
   color: rgb(46, 46, 46);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
 }
 
 
@@ -115,8 +121,71 @@ body {
   line-height: 1.38;
   color: rgb(0, 0, 0);
   transition: .3s ease;
+  -webkit-transition: .3s ease;
+}
+
+
+.search-focused {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  width: 100%;
+  height: 133px;
+  margin: 0 auto;
+  background-color: rgb(43, 43, 43);
+  transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
+
+.search-focused .search-form {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  width: 58.125%;
+  height: 42px;
+  margin: auto;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+.search-focused .search-submit {
+  display: block;
+  float: left;
+  width: 21.875%;
+  height: 41px;
+  margin-left: 3.57527%;
+  border-radius: 6px;
+  background-color: rgb(194, 194, 194);
+  font-size: 1em;
+  line-height: 1.38;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(46, 46, 46);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+.search-focused .search-input {
+  display: block;
+  float: left;
+  width: 70.1923076923%;
+  height: 41px;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 2.063em;
+  line-height: 1.38;
+  color: rgb(0, 0, 0);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+
+
 
 
 .search-image {
@@ -124,7 +193,6 @@ body {
   height: 120px;
   min-width: 120px;
   margin: 10px 0 0 2%;
-  background-color: rgb(222, 222, 222);
 }
 
 .search-image img {
