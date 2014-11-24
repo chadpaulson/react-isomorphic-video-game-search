@@ -46,7 +46,8 @@ var Search = React.createClass({
   handleClick: function(e) {
     if(this.state.defaultClass != 'search-home') {
       this.setState({
-        defaultClass: 'search-focused'
+        defaultClass: 'search-focused',
+        searchString: ''
       })
     }
   },
@@ -69,7 +70,7 @@ var Search = React.createClass({
   render: function() {
     var searchContext
     if(this.state.loading) {
-      searchContext = <img src="/images/spinner.gif" />
+      searchContext = <img className="search-loading" src="/images/spinner.gif" />
     } else {
       searchContext = <button className="search-submit" type="submit">search</button>
     }
