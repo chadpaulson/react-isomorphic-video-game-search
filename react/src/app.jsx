@@ -33,6 +33,7 @@ var App = React.createClass({
             <Location path="/" handler={Search} />
             <Location path="/game" handler={Game} />
             <Location path="/release" handler={Release} />
+            <Location path="/search/:query" handler={Search} />
           </Locations>
         </CaptureClicks>
         </div>
