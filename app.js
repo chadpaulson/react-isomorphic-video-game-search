@@ -3,7 +3,9 @@
 require('node-jsx').install({extension: '.jsx'})
 var reactApp = require('./react/src/app.jsx')
 var reactAsync = require('react-async')
+var appConfig = require('./config')
 
+var http = require('http')
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -18,6 +20,24 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
+ 
+app.get('/api/search/:query', function(req, res) {
+  http.get({
+    host: appConfig.API_HOST,
+    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resource_type=game&query=' + req.params.query + '&field_list=name,image'
+  }, function(apiResponse) {
+    var chunks = []
+    apiResponse.on('data', function(chunk) {
+      chunks.push(chunk)
+    }).on('end', function() {
+      var body = Buffer.concat(chunks)
+      res.set('Content-Type', 'application/json')
+      res.send(body)
+    })
+  })
+})
+
 
 
 // render react routes on server
