@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/api/search/:query', function(req, res) {
   http.get({
     host: appConfig.REMOTE_API_HOST,
-    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resource_type=game&query=' + req.params.query + '&field_list=name,image,id'
+    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resources=game&resource_type=game&query=' + req.params.query + '&field_list=name,image,id'
   }, function(apiResponse) {
     var chunks = []
     apiResponse.on('data', function(chunk) {
