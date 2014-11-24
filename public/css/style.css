@@ -15,6 +15,8 @@ body {
   height: 233px;
   margin: auto;
   background-color: rgb(43, 43, 43);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
 }
 
 .search-home .search-form {
@@ -24,7 +26,7 @@ body {
   left: 0;
   right: 0;
   z-index: 2;
-  width: 58.125%;
+  width: 60%;
   height: 42px;
   margin: auto;
 }
@@ -32,7 +34,7 @@ body {
 .search-home .search-input {
   display: block;
   float: left;
-  width: 70.1923076923%;
+  width: 70%;
   height: 41px;
   padding: 0 10px;
   background-color: rgb(242, 242, 242);
@@ -44,9 +46,9 @@ body {
 .search-home .search-submit {
   display: block;
   float: left;
-  width: 21.875%;
+  width: 22%;
   height: 41px;
-  margin-left: 3.57527%;
+  margin-left: 3.5%;
   border-radius: 6px;
   background-color: rgb(194, 194, 194);
   font-size: 1em;
@@ -54,4 +56,102 @@ body {
   text-align: center;
   text-transform: uppercase;
   color: rgb(46, 46, 46);
+}
+
+
+.search-blurred {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  width: 100%;
+  height: 75px;
+  margin: 0 auto;
+  background-color: rgb(43, 43, 43);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+.search-blurred .search-form {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  width: 40%;
+  height: 42px;
+  margin: auto;
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+.search-blurred .search-submit {
+  display: block;
+  float: left;
+  width: 22%;
+  height: 41px;
+  margin-left: 3.5%;
+  border-radius: 6px;
+  background-color: rgb(194, 194, 194);
+  font-size: 1em;
+  line-height: 1.38;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(46, 46, 46);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+.search-blurred .search-input {
+  display: block;
+  float: left;
+  width: 70%;
+  height: 41px;
+  padding: 0 10px;
+  background-color: rgb(242, 242, 242);
+  font-size: 2em;
+  line-height: 1.38;
+  color: rgb(0, 0, 0);
+  transition: .3s ease;
+  -webkit-transition: .3s ease;  
+}
+
+
+.search-image {
+  float: left;
+  height: 120px;
+  min-width: 120px;
+  margin: 10px 0 0 2%;
+  background-color: rgb(222, 222, 222);
+}
+
+.search-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.search-title {
+  width: 70%;
+  min-height: 46px;
+  margin: 41px 0 0 200px;
+  font-size: 2em;
+  line-height: 1.38;
+}
+
+.search-results {
+  width: 90%;
+  height: 740px;
+  margin: 133px auto 0;
+}
+
+.search-result {
+  float: left;
+  width: 100%;
+  height: 133px;
+  margin-top: 23px;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  padding-bottom:23px;
 }
