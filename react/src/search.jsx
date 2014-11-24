@@ -26,6 +26,7 @@ var Search = React.createClass({
 
   componentDidMount: function() {
     this.listenTo(searchStore, this.stopLoading)
+    this.refs.search.getDOMNode().focus()
   },
 
   handleSubmit: function(e) {
@@ -75,7 +76,7 @@ var Search = React.createClass({
     return (
       <div className={this.state.defaultClass}>
         <form method="get" action="/" className="search-form" onSubmit={this.handleSubmit}>
-          <input type="text" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
+          <input type="text" ref="search" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
           {searchContext}
         </form>
       </div>
