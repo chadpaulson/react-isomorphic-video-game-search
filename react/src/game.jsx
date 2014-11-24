@@ -3,6 +3,7 @@
 
 var React = require('react')
 var Reflux = require('reflux')
+var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
 
 var appActions = require('./actions')
@@ -10,12 +11,19 @@ var gameStore = require('./stores/gameStore')
 
 var Game = React.createClass({
 
-  mixins: [Reflux.ListenerMixin],
+  mixins: [reactAsync.Mixin, Reflux.ListenerMixin],
 
-  getInitialState: function() {
-    return {
-      game: {}
-    }
+  getInitialStateAsync: function(cb) {
+    appActions.loadGame(this.props.game_id)
+    gameStore.listen(function(data) {
+      try {
+        return cb(null, {
+          game: data
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    })
   },
 
   componentDidMount: function() {

@@ -1,6 +1,7 @@
 var Reflux = require('reflux')
 var request = require('superagent')
 
+var appConfig = require('./../config')
 var appActions = require('./../actions')
 
 
@@ -18,7 +19,7 @@ var gameStore = Reflux.createStore({
     } else {
       var self = this
       request
-        .get('/api/game/' + gameId)
+        .get(appConfig.LOCAL_API_HOST + '/api/game/' + gameId)
         .end(function(err, res) {
           if(res.body && res.body.results) {
             self.gameData[gameId] = res.body.results

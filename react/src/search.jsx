@@ -3,6 +3,7 @@
 
 var React = require('react')
 var Reflux = require('reflux')
+var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
 
 var appActions = require('./actions')
@@ -11,14 +12,29 @@ var searchStore = require('./stores/searchStore')
 
 var Search = React.createClass({
 
-  mixins: [Reflux.ListenerMixin],
+  mixins: [reactAsync.Mixin, Reflux.ListenerMixin],
 
-  getInitialState: function() {
-    return {
-      searchString: '',
-      searchResults: []
+  getInitialStateAsync: function(cb) {
+    if(this.props.query) {
+      appActions.searchUpdate(this.props.query)
+      searchStore.listen(function(data) {
+        try {
+          return cb(null, {
+            searchString: data.searchString,
+            searchResults: data.searchResults
+          })
+        } catch(err) {
+          console.log(err)
+        }
+      })      
+    } else {
+      return cb(null, {
+        searchString: '',
+        searchResults: []
+      })      
     }
-  },
+
+  },  
 
   componentDidMount: function() {
     this.listenTo(searchStore, this.refreshSearch)

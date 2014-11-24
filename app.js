@@ -3,7 +3,7 @@
 require('node-jsx').install({extension: '.jsx'})
 var reactApp = require('./react/src/app.jsx')
 var reactAsync = require('react-async')
-var appConfig = require('./config')
+var appConfig = require('./react/src/config')
 
 var http = require('http')
 var express = require('express')
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
  
 app.get('/api/search/:query', function(req, res) {
   http.get({
-    host: appConfig.API_HOST,
+    host: appConfig.REMOTE_API_HOST,
     path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resource_type=game&query=' + req.params.query + '&field_list=name,image,id'
   }, function(apiResponse) {
     var chunks = []
@@ -40,7 +40,7 @@ app.get('/api/search/:query', function(req, res) {
 
 app.get('/api/game/:game_id', function(req, res) {
   http.get({
-    host: appConfig.API_HOST,
+    host: appConfig.REMOTE_API_HOST,
     path: '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json'
   }, function(apiResponse) {
     var chunks = []

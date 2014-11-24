@@ -1,6 +1,7 @@
 var Reflux = require('reflux')
 var request = require('superagent')
 
+var appConfig = require('./../config')
 var appActions = require('./../actions')
 
 
@@ -14,7 +15,7 @@ var searchStore = Reflux.createStore({
     var self = this
     var searchString = arguments[0]
     request
-      .get('/api/search/' + searchString)
+      .get(appConfig.LOCAL_API_HOST + '/api/search/' + searchString)
       .end(function(err, res) {
         if(res.body && res.body.results) {
           self.trigger({
