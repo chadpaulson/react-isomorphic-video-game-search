@@ -54,13 +54,17 @@ var SearchResults = React.createClass({
   },
 
   render: function() {
-    var results = []
-    this.state.searchResults.forEach(function(game) {
-      if(game.image) {
-        var gameURL = '/game/' + game.id
-        results.push(<div className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
-      }
-    })
+    if(this.state.searchResults.length) {
+      var results = []
+      this.state.searchResults.forEach(function(game) {
+        if(game.image) {
+          var gameURL = '/game/' + game.id
+          results.push(<div className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
+        }
+      })
+    } else {
+      var results = <div className="no-results">No Results</div>
+    }
     return (
       <div className="search-results clearfix">
         {results}

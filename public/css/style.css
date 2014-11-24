@@ -155,3 +155,10 @@ body {
   border-bottom: 1px solid rgb(223, 223, 223);
   padding-bottom:23px;
 }
+
+.no-results {
+  font-size: 2em;
+  width: 300px;
+  margin: 0px auto;
+  text-align: center;
+}
