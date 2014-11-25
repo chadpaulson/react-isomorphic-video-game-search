@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 'use strict'
 
-var React = require('react')
+var React = require('react/addons')
 var Reflux = require('reflux')
 var slug = require('to-slug-case')
 var reactAsync = require('react-async')
@@ -68,14 +68,14 @@ var Game = React.createClass({
     }
     return (
       <DocumentTitle title={this.state.game.name}>
-      <div className="game-detail clearfix">
-        <h1 className="game-title">{this.state.game.name}</h1>
-        <div className="game-info">
-          <p>{this.state.game.deck}</p>
-          {related}
+        <div className="game-detail clearfix">
+          <h1 className="game-title">{this.state.game.name}</h1>
+          <div className="game-info">
+            <p>{this.state.game.deck}</p>
+            {related}
+          </div>
+          <div className="game-image"><img src={this.state.game.image.medium_url} /></div>
         </div>
-        <div className="game-image"><img src={this.state.game.image.medium_url} /></div>
-      </div>
       </DocumentTitle>
     )
 	}

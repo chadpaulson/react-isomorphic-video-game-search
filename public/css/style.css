@@ -312,3 +312,21 @@ input {
   max-width: 100%;
   height:auto;
 }
+
+.search-result-enter {
+  opacity: 0.01;
+  transition: opacity .7s ease-in;
+}
+
+.search-result-leave {
+  opacity: 1;
+  transition: opacity .7s ease-in;
+}
+
+.search-result-leave.search-result-leave-active {
+  opacity: 0.01;
+}
+
+.search-result-enter.search-result-enter-active {
+  opacity: 1;
+}

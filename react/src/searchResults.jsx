@@ -1,12 +1,13 @@
 /** @jsx React.DOM */
 'use strict'
 
-var React = require('react')
+var React = require('react/addons')
 var Reflux = require('reflux')
 var slug = require('to-slug-case')
 var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
 var DocumentTitle = require('react-document-title')
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var appActions = require('./actions')
 var searchStore = require('./stores/searchStore')
@@ -53,7 +54,7 @@ var SearchResults = React.createClass({
       this.state.searchResults.forEach(function(game) {
         if(game.image) {
           var gameURL = '/game/' + game.id + '/' + slug(game.name)
-          results.push(<div className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
+          results.push(<div key={game.id} className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
         }
       })
     } else {
@@ -63,7 +64,9 @@ var SearchResults = React.createClass({
     return (
       <DocumentTitle title={searchTitle}>
         <div className="search-results clearfix">
-          {results}
+          <ReactCSSTransitionGroup transitionName="search-result">
+            {results}
+          </ReactCSSTransitionGroup>
         </div>
       </DocumentTitle>
     )

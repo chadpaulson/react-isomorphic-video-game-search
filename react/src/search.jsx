@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 'use strict'
 
-var React = require('react')
+var React = require('react/addons')
 var Reflux = require('reflux')
 
 var searchStore = require('./stores/searchStore')
