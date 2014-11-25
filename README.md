@@ -10,7 +10,7 @@ Live Demo @ http://react-isomorphic-video-game-search.warppi.pe
 
 * Server side rendering of all entry points.
 * Progressive enhancement. App does not require Javscript on client to function.
-* Isomorphic [Flux](https://facebook.github.io/flux/docs/overview.html) implementation powered by [reflux](https://github.com/spoike/refluxjs).
+* Isomorphic [Flux](https://facebook.github.io/flux/docs/overview.html) implementation powered by [reflux](https://github.com/spoike/refluxjs) and [react-async](https://github.com/andreypopp/react-async).
 * Isomorphic routing powered by [react-router-component](https://github.com/STRML/react-router-component).
 * CSS animations via React's [CSSTransitionGroup](https://facebook.github.io/react/docs/animation.html).
 * Canonical URLs:
