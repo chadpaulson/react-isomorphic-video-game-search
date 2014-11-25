@@ -35,7 +35,7 @@ var Game = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if(this.props.game_id != nextProps.game_id && typeof(nextProps.game_id) !== "undefined") {
+    if(typeof(nextProps.game_id) !== "undefined") {
       appActions.loadGame(nextProps.game_id)
     }
   },
@@ -78,7 +78,7 @@ var Game = React.createClass({
         </div>
       </DocumentTitle>
     )
-	}
+  }
 
 })
 

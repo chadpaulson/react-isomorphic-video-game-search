@@ -64,12 +64,12 @@ app.use(function(req, res, next) {
   try {
     reactAsync.renderToStringAsync(reactApp.routes({path: req.path}), function(err, markup) {
       if(err) {
-        return next(err)
+        return next()
       }
       return res.send(markup.replace('%react-iso-vgs%', reactApp.title.rewind()))
     })
   } catch(err) {
-    return next(err)
+    return next()
   }
 })
 

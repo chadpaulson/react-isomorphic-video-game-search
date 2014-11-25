@@ -36,7 +36,7 @@ var SearchResults = React.createClass({
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if(this.props.query != nextProps.query && typeof(nextProps.query) !== "undefined") {
+    if(typeof(nextProps.query) !== "undefined") {
       appActions.searchUpdate(nextProps.query)
     }
   },
