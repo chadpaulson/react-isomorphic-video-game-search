@@ -41,7 +41,7 @@ app.get('/api/search/:query', function(req, res) {
 app.get('/api/game/:game_id', function(req, res) {
   http.get({
     host: appConfig.REMOTE_API_HOST,
-    path: '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json'
+    path: '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&field_list=name,image,id,similar_games,deck'
   }, function(apiResponse) {
     var chunks = []
     apiResponse.on('data', function(chunk) {
