@@ -53,8 +53,8 @@ var Game = React.createClass({
     })
   },
 
-	render: function() {
-    
+  render: function() {
+
     if(this.state.game.similar_games && this.state.game.similar_games.length) {
       var relatedGames = []
       var self = this
