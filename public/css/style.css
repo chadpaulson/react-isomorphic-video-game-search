@@ -10,12 +10,12 @@ a {
 }
 
 a:hover {
-  color: #D6246C;
+  color: #F50045;
   text-decoration: underline;
 }
 
 input {
-  font-family:Helvetica, Arial;
+  font-weight: 400;
 }
 
 .search-home {
@@ -54,9 +54,9 @@ input {
   height: 41px;
   padding: 0 10px;
   background-color: #FCFCFA;
-  font-size: 2.063em;
-  line-height: 1.38;
-  color: rgb(0, 0, 0);
+  font-size: 1.8em;
+  line-height: 1.3;
+  color: #343434;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }  
@@ -74,7 +74,7 @@ input {
   line-height: 1.38;
   text-align: center;
   text-transform: uppercase;
-  color: #00917E;
+  color: #F50045;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -88,8 +88,8 @@ input {
   width: 100%;
   height: 75px;
   margin: 0 auto;
-  background-color: #00917E;
-  border-bottom: 3px solid #BAE65C;
+  background-color: #CBE4EA;
+  border-bottom: 2px solid #D8DEC7;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -121,7 +121,7 @@ input {
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
-  color: #D6246C;
+  color: #F50045;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -151,7 +151,7 @@ input {
   height: 133px;
   margin: 0 auto;
   background-color: #2C171C;
-  border-top: 6px solid #D6246C;
+  border-top: 6px solid #F50045;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -183,7 +183,7 @@ input {
   line-height: 1.38;
   text-align: center;
   text-transform: uppercase;
-  color: #D6246C;
+  color: #F50045;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
@@ -197,14 +197,17 @@ input {
   background-color: #FCFCFA;
   font-size: 1.6em;
   line-height: 1.38;
-  color: rgb(0, 0, 0);
+  color: #343434;
   transition: .3s ease;
   -webkit-transition: .3s ease;  
 }
 
-
-
-
+.search-submit:hover {
+  background-color: #F50045;
+  color: #FCFCFA;
+  transition: .2s ease;
+  -webkit-transition: .2s ease;  
+}
 
 .search-image {
   float: left;
@@ -260,4 +263,52 @@ input {
 
 .search-loading {
   margin-left:23px;
+}
+
+.game-detail {
+  position: relative;
+  width: 90%;
+  height: 740px;
+  margin: 140px auto 0;
+}
+
+.game-info {
+  position: relative;
+  float: left;
+  width: 60%;
+  height: 564px;
+  font-weight: 300;
+  line-height: 1.38;
+  font-size: 0.8em;  
+  margin: 112px 0 0 1.5%;
+}
+
+.game-info p {
+  border-bottom: 1px solid rgb(223, 223, 223);
+  padding-bottom:20px;
+}
+
+.game-title {
+  position: absolute;
+  top: 46px;
+  left: 1.5%;
+  width: 34%;
+  min-height: 46px;
+  font-size: 1.8em;
+  line-height: 1.38;
+  color: #343434;
+}
+
+.game-image {
+  position: absolute;
+  top: 46px;
+  right: 1.5%;
+  z-index: 5;
+  width: 33%;
+  height: 547px;
+}
+
+.game-image img {
+  max-width: 100%;
+  height:auto;
 }

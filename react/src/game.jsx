@@ -39,9 +39,13 @@ var Game = React.createClass({
     }
   },
 
+  getURI: function(game_id, game_name) {
+    return '/game/' + game_id + '/' + slug(game_name)
+  },
+
   refreshGame: function(data) {
     if(typeof(window) !== 'undefined' && this.props.game_slug != slug(data.name)) {
-      window.location = '/game/' + data.id + '/' + slug(data.name)
+      window.location = this.getURI(data.id, data.name)
     } 
     this.setState({
       game: data
@@ -49,10 +53,26 @@ var Game = React.createClass({
   },
 
 	render: function() {
+    
+    if(this.state.game.similar_games && this.state.game.similar_games.length) {
+      var relatedGames = []
+      var self = this
+      this.state.game.similar_games.forEach(function(game) {
+        var gameURI = self.getURI(game.id, game.name)
+        relatedGames.push(<li><Link href={gameURI}>{game.name}</Link></li>)
+      })
+      var related = <div><h3>Similar Games</h3><ul>{relatedGames}</ul></div>
+    } else {
+      var related = null
+    }
     return (
-      <div>
-        <h1>{this.state.game.name}</h1>
-        <p>{this.state.game.deck}</p>
+      <div className="game-detail clearfix">
+        <h1 className="game-title">{this.state.game.name}</h1>
+        <div className="game-info">
+          <p>{this.state.game.deck}</p>
+          {related}
+        </div>
+        <div className="game-image"><img src={this.state.game.image.medium_url} /></div>
       </div>
     )
 	}
