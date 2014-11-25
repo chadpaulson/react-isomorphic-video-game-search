@@ -31,10 +31,12 @@ var Search = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault()
-    this.setState({
-      loading: true
-    })
-    this.props.onSearch(this.state.searchString)
+    if(this.state.searchString.trim().length) {
+      this.setState({
+        loading: true
+      })
+      this.props.onSearch(this.state.searchString)
+    }
   },
 
   handleChange: function(e) {
