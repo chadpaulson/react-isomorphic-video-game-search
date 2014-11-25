@@ -1,8 +1,9 @@
 'use strict'
 
 require('node-jsx').install({extension: '.jsx'})
-var reactApp = require('./react/src/app.jsx')
 var reactAsync = require('react-async')
+
+var reactApp = require('./react/src/app.jsx')
 var appConfig = require('./react/src/config')
 
 var http = require('http')
@@ -63,12 +64,12 @@ app.use(function(req, res, next) {
   try {
     reactAsync.renderToStringAsync(reactApp.routes({path: req.path}), function(err, markup) {
       if(err) {
-        return next()
+        return next(err)
       }
-      return res.send(markup)
+      return res.send(markup.replace('%react-iso-vgs%', reactApp.title.rewind()))
     })
   } catch(err) {
-    return next()
+    return next(err)
   }
 })
 

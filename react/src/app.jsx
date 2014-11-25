@@ -3,6 +3,7 @@
 
 var React = require('react')
 var Router = require('react-router-component')
+var DocumentTitle = require('react-document-title')
 
 var Search = require('./search')
 var SearchResults = require('./searchResults')
@@ -36,13 +37,14 @@ var App = React.createClass({
     return (
       <html>
         <head>
-          <title>Video Game Search</title>
+          <title>%react-iso-vgs%</title>
           <link href="http://fonts.googleapis.com/css?family=Merriweather+Sans:800" rel="stylesheet" type="text/css" />
           <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" />
           <link rel="stylesheet" type="text/css" href="/css/style.css" />
         </head>
         <body>
         <Search onSearch={this.searchGames} entryPath={this.state.entryPath} />
+        <DocumentTitle title="%react-iso-vgs%">
         <CaptureClicks>
           <Locations ref="router" path={this.props.path}>
             <Location path="/" handler={Home} />
@@ -50,6 +52,7 @@ var App = React.createClass({
             <Location path="/search/:query" handler={SearchResults} />
           </Locations>
         </CaptureClicks>
+        </DocumentTitle>
         <script type="text/javascript" src="/js/behavior.js"></script>
         </body>
       </html>
@@ -60,7 +63,8 @@ var App = React.createClass({
 
 
 module.exports = {
-  routes: App
+  routes: App,
+  title: DocumentTitle
 }
 
 

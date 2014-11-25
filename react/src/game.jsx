@@ -3,9 +3,10 @@
 
 var React = require('react')
 var Reflux = require('reflux')
+var slug = require('to-slug-case')
 var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
-var slug = require('to-slug-case')
+var DocumentTitle = require('react-document-title')
 
 var appActions = require('./actions')
 var gameStore = require('./stores/gameStore')
@@ -66,6 +67,7 @@ var Game = React.createClass({
       var related = null
     }
     return (
+      <DocumentTitle title={this.state.game.name}>
       <div className="game-detail clearfix">
         <h1 className="game-title">{this.state.game.name}</h1>
         <div className="game-info">
@@ -74,6 +76,7 @@ var Game = React.createClass({
         </div>
         <div className="game-image"><img src={this.state.game.image.medium_url} /></div>
       </div>
+      </DocumentTitle>
     )
 	}
 

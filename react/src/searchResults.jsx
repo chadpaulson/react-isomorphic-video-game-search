@@ -3,9 +3,10 @@
 
 var React = require('react')
 var Reflux = require('reflux')
+var slug = require('to-slug-case')
 var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
-var slug = require('to-slug-case')
+var DocumentTitle = require('react-document-title')
 
 var appActions = require('./actions')
 var searchStore = require('./stores/searchStore')
@@ -58,10 +59,13 @@ var SearchResults = React.createClass({
     } else {
       var results = <div className="no-results">No Games Matching '{this.state.searchString}'</div>
     }
+    var searchTitle = 'Search: ' + this.state.searchString
     return (
-      <div className="search-results clearfix">
-        {results}
-      </div>
+      <DocumentTitle title={searchTitle}>
+        <div className="search-results clearfix">
+          {results}
+        </div>
+      </DocumentTitle>
     )
   }
 
