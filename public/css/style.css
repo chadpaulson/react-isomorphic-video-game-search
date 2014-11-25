@@ -280,12 +280,16 @@ input {
   font-weight: 300;
   line-height: 1.38;
   font-size: 0.8em;  
-  margin: 112px 0 0 1.5%;
+  margin: 150px 0 0 1.5%;
 }
 
 .game-info p {
   border-bottom: 1px solid rgb(223, 223, 223);
-  padding-bottom:20px;
+  padding-bottom:40px;
+}
+
+.game-related {
+  margin-top:40px;
 }
 
 .game-title {
@@ -296,7 +300,7 @@ input {
   min-height: 46px;
   font-size: 1.8em;
   line-height: 1.38;
-  color: #343434;
+  color: #F50045;
 }
 
 .game-image {

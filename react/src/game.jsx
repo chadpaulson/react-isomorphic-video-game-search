@@ -62,7 +62,7 @@ var Game = React.createClass({
         var gameURI = self.getURI(game.id, game.name)
         relatedGames.push(<li><Link href={gameURI}>{game.name}</Link></li>)
       })
-      var related = <div><h3>Similar Games</h3><ul>{relatedGames}</ul></div>
+      var related = <div className="game-related"><h3>Similar Games</h3><ul>{relatedGames}</ul></div>
     } else {
       var related = null
     }
