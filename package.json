@@ -1,7 +1,7 @@
 {
   "name": "react-isomorphic-video-game-search",
-  "description": "Isomorphic application demo using react, express, superagent and the Giant Bomb API.",
-  "author": "Chad Paulson (http://chadpaulson.com)",
+  "description": "An Isomorphic application demo powered by React, reflux, react-router-component, express, superagent and the Giant Bomb API.",
+  "author": "Chad Paulson",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,5 +27,27 @@
   "devDependencies": {
     "browserify": "^6.3.2",
     "react-tools": "^0.12.1"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chadpaulson/react-isomorphic-video-game-search.git"
+  },
+  "keywords": [
+    "react",
+    "isomorphic",
+    "flux",
+    "express",
+    "react-router-component",
+    "reflux",
+    "demo",
+    "video",
+    "games",
+    "superagent"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chadpaulson/react-isomorphic-video-game-search/issues"
+  },
+  "homepage": "https://github.com/chadpaulson/react-isomorphic-video-game-search"
 }
