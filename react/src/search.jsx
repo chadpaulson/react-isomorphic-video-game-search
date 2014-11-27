@@ -40,9 +40,16 @@ var Search = React.createClass({
   },
 
   handleChange: function(e) {
-    this.setState({
-      searchString: e.target.value
-    })
+    if(e.target.value.length) {
+      this.setState({
+        searchString: e.target.value,
+        prevSearch: e.target.value
+      })
+    } else {
+      this.setState({
+        searchString: e.target.value,
+      })
+    }
   },
 
   handleClick: function(e) {
@@ -56,9 +63,16 @@ var Search = React.createClass({
 
   handleBlur: function(e) {
     if(this.state.defaultClass != 'search-home') {
-      this.setState({
-        defaultClass: 'search-blurred'
-      })
+      if(!this.state.searchString.length) {
+        this.setState({
+          searchString: this.state.prevSearch,
+          defaultClass: 'search-blurred'
+        })
+      } else {
+        this.setState({
+          defaultClass: 'search-blurred'
+        })        
+      }
     }
   },
 
