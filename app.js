@@ -6,7 +6,7 @@ var reactAsync = require('react-async')
 var reactApp = require('./react/src/app.jsx')
 var appConfig = require('./react/src/config')
 
-var http = require('http')
+var request = require('superagent')
 var express = require('express')
 var path = require('path')
 var favicon = require('serve-favicon')
@@ -24,34 +24,16 @@ app.use(express.static(path.join(__dirname, 'public')))
 
  
 app.get('/api/search/:query', function(req, res) {
-  http.get({
-    host: appConfig.REMOTE_API_HOST,
-    path: '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resources=game&resource_type=game&query=' + req.params.query + '&field_list=name,image,id'
-  }, function(apiResponse) {
-    var chunks = []
-    apiResponse.on('data', function(chunk) {
-      chunks.push(chunk)
-    }).on('end', function() {
-      var body = Buffer.concat(chunks)
-      res.set('Content-Type', 'application/json')
-      res.send(body)
-    })
+  request.get(appConfig.REMOTE_API_HOST + '/api/search/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&resources=game&resource_type=game&query=' + req.params.query + '&field_list=name,image,id').end(function(data) {
+    res.set('Content-Type', 'application/json')
+    res.send(data.body)
   })
 })
 
 app.get('/api/game/:game_id', function(req, res) {
-  http.get({
-    host: appConfig.REMOTE_API_HOST,
-    path: '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&field_list=name,image,id,similar_games,deck'
-  }, function(apiResponse) {
-    var chunks = []
-    apiResponse.on('data', function(chunk) {
-      chunks.push(chunk)
-    }).on('end', function() {
-      var body = Buffer.concat(chunks)
-      res.set('Content-Type', 'application/json')
-      res.send(body)
-    })
+  request.get(appConfig.REMOTE_API_HOST + '/api/game/' + req.params.game_id + '/?api_key=' + appConfig.GIANT_BOMB_API_KEY + '&format=json&field_list=name,image,id,similar_games,deck').end(function(data) {
+    res.set('Content-Type', 'application/json')
+    res.send(data.body)    
   })
 })
 
