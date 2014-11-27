@@ -262,7 +262,8 @@ input {
 }
 
 .search-loading {
-  margin-left:23px;
+  margin-top:-5px;
+  margin-left:133px;
 }
 
 .game-detail {
