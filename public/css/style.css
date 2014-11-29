@@ -318,20 +318,20 @@ input {
   height:auto;
 }
 
-.search-result-enter {
+.css-transition-enter {
   opacity: 0.01;
   transition: opacity .7s ease-in;
 }
 
-.search-result-leave {
+.css-transition-leave {
   opacity: 1;
   transition: opacity .7s ease-in;
 }
 
-.search-result-leave.search-result-leave-active {
+.css-transition-leave.css-transition-leave-active {
   opacity: 0.01;
 }
 
-.search-result-enter.search-result-enter-active {
+.css-transition-enter.css-transition-enter-active {
   opacity: 1;
 }

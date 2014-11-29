@@ -7,6 +7,7 @@ var slug = require('to-slug-case')
 var reactAsync = require('react-async')
 var Link = require('react-router-component').Link
 var DocumentTitle = require('react-document-title')
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 
 var appActions = require('./actions')
 var gameStore = require('./stores/gameStore')
@@ -60,21 +61,30 @@ var Game = React.createClass({
       var self = this
       this.state.game.similar_games.forEach(function(game) {
         var gameURI = self.getURI(game.id, game.name)
-        relatedGames.push(<li><Link href={gameURI}>{game.name}</Link></li>)
+        var gameKey = "related-" + game.id
+        relatedGames.push(<li key={gameKey}><Link href={gameURI}>{game.name}</Link></li>)
       })
-      var related = <div className="game-related"><h3>Similar Games</h3><ul>{relatedGames}</ul></div>
+      var related = (
+        <div key="game-related" className="game-related">
+          <h3>Similar Games</h3>
+          <ul>
+            <ReactCSSTransitionGroup transitionName="css-transition">
+              {relatedGames}
+            </ReactCSSTransitionGroup>
+          </ul>
+        </div>)
     } else {
       var related = null
     }
     return (
       <DocumentTitle title={this.state.game.name}>
-        <div className="game-detail clearfix">
-          <h1 className="game-title">{this.state.game.name}</h1>
-          <div className="game-info">
-            <p>{this.state.game.deck}</p>
+        <div key="game-detail" className="game-detail clearfix">
+          <h1 key="game-title" className="game-title">{this.state.game.name}</h1>
+          <div key="game-info" className="game-info">
+            <p key="game-deck">{this.state.game.deck}</p>
             {related}
           </div>
-          <div className="game-image"><img src={this.state.game.image.medium_url} /></div>
+          <div key="game-image-container" className="game-image"><img key="game-image" src={this.state.game.image.medium_url} /></div>
         </div>
       </DocumentTitle>
     )

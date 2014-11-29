@@ -64,7 +64,7 @@ var SearchResults = React.createClass({
     return (
       <DocumentTitle title={searchTitle}>
         <div className="search-results clearfix">
-          <ReactCSSTransitionGroup transitionName="search-result">
+          <ReactCSSTransitionGroup transitionName="css-transition">
             {results}
           </ReactCSSTransitionGroup>
         </div>
