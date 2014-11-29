@@ -45,6 +45,18 @@ var Game = React.createClass({
     return '/game/' + game_id + '/' + slug(game_name)
   },
 
+  beginImageLoad: function() {
+    this.refs.gameImage.getDOMNode().className += ' hide'
+    this.refs.gameTitle.getDOMNode().className += ' hide'
+    this.refs.gameDeck.getDOMNode().className += ' hide'
+  },
+
+  confirmImageLoad: function() {
+    this.refs.gameImage.getDOMNode().className = 'game-image'
+    this.refs.gameTitle.getDOMNode().className = 'game-title'
+    this.refs.gameDeck.getDOMNode().className = ''
+  },
+
   refreshGame: function(data) {
     if(typeof(window) !== 'undefined' && this.props.game_slug != slug(data.name)) {
       window.location = this.getURI(data.id, data.name)
@@ -55,14 +67,13 @@ var Game = React.createClass({
   },
 
   render: function() {
-
     if(this.state.game.similar_games && this.state.game.similar_games.length) {
       var relatedGames = []
       var self = this
       this.state.game.similar_games.forEach(function(game) {
         var gameURI = self.getURI(game.id, game.name)
         var gameKey = "related-" + game.id
-        relatedGames.push(<li key={gameKey}><Link href={gameURI}>{game.name}</Link></li>)
+        relatedGames.push(<li key={gameKey}><Link onClick={self.beginImageLoad} href={gameURI}>{game.name}</Link></li>)
       })
       var related = (
         <div key="game-related" className="game-related">
@@ -79,12 +90,14 @@ var Game = React.createClass({
     return (
       <DocumentTitle title={this.state.game.name}>
         <div key="game-detail" className="game-detail clearfix">
-          <h1 key="game-title" className="game-title">{this.state.game.name}</h1>
+          <h1 ref="gameTitle" key="game-title" className="game-title">{this.state.game.name}</h1>
           <div key="game-info" className="game-info">
-            <p key="game-deck">{this.state.game.deck}</p>
+            <p ref="gameDeck" key="game-deck">{this.state.game.deck}</p>
             {related}
           </div>
-          <div key="game-image-container" className="game-image"><img key="game-image" src={this.state.game.image.medium_url} /></div>
+          <div key="game-image-container" className="game-image-container">
+            <img className="game-image" ref="gameImage" onLoad={this.confirmImageLoad} key="game-image" src={this.state.game.image.medium_url} />
+          </div>
         </div>
       </DocumentTitle>
     )

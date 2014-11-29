@@ -199,14 +199,14 @@ input {
   line-height: 1.38;
   color: #343434;
   transition: .3s ease;
-  -webkit-transition: .3s ease;  
+  -webkit-transition: .3s ease;
 }
 
 .search-submit:hover {
   background-color: #F50045;
   color: #FCFCFA;
   transition: .2s ease;
-  -webkit-transition: .2s ease;  
+  -webkit-transition: .2s ease;
 }
 
 .search-image {
@@ -302,9 +302,11 @@ input {
   font-size: 1.8em;
   line-height: 1.38;
   color: #F50045;
+  transition: opacity .3s ease;
+  webkit-transition: opacity .3s ease;  
 }
 
-.game-image {
+.game-image-container {
   position: absolute;
   top: 46px;
   right: 1.5%;
@@ -313,19 +315,28 @@ input {
   height: 547px;
 }
 
-.game-image img {
+.game-image {
   max-width: 100%;
   height:auto;
+  opacity: 1;
+  transition: opacity .3s ease;
+  webkit-transition: opacity .3s ease;
+}
+
+.hide {
+  opacity: 0.01 !important;
 }
 
 .css-transition-enter {
   opacity: 0.01;
   transition: opacity .7s ease-in;
+  webkit-transition: opacity .7s ease-in;
 }
 
 .css-transition-leave {
   opacity: 1;
   transition: opacity .7s ease-in;
+  webkit-transition: opacity .7s ease-in;
 }
 
 .css-transition-leave.css-transition-leave-active {
