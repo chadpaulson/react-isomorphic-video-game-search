@@ -93,7 +93,7 @@ var Search = React.createClass({
     return (
       <div className={this.state.defaultClass}>
         <form method="get" action="/" className="search-form" onSubmit={this.handleSubmit}>
-          <input type="text" ref="search" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
+          <input placeholder="Super Mario Bros." type="text" ref="search" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
           {searchContext}
         </form>
       </div>
