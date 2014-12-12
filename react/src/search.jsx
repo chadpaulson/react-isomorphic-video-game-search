@@ -74,6 +74,7 @@ var Search = React.createClass({
         })        
       }
     }
+    this.refs.search.getDOMNode().focus()
   },
 
   stopLoading: function() {

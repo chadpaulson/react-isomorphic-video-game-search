@@ -135,7 +135,7 @@ input {
   background-color: #FCFCFA;
   font-size: 1em;
   line-height: 1.2;
-  color: rgb(163, 163, 163);
+  color: #555;
   transition: .3s ease;
   -webkit-transition: .3s ease;
 }
