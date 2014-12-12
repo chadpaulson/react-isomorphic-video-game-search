@@ -54,17 +54,25 @@ var SearchResults = React.createClass({
       this.state.searchResults.forEach(function(game) {
         if(game.image) {
           var gameURL = '/game/' + game.id + '/' + slug(game.name)
-          results.push(<div key={game.id} className="search-result clearfix"><Link href={gameURL}><div className="search-image"><img src={game.image.icon_url} /></div></Link> <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2></div>)
+          results.push(
+            <Link href={gameURL}>
+              <div key={game.id} className="search-result clearfix">
+                <div className="search-image">
+                  <img src={game.image.icon_url} alt={game.name} />
+                </div>
+                <h2 className="search-title">{game.name}</h2>
+              </div>
+            </Link>)
         }
       })
     } else {
-      var results = <div className="no-results">No Games Matching '{this.state.searchString}'</div>
+      results.push(<div key="no-results" className="no-results">No Games Matching '{this.state.searchString}'</div>)
     }
     var searchTitle = 'Search: ' + this.state.searchString
     return (
       <DocumentTitle title={searchTitle}>
         <div className="search-results clearfix">
-          <ReactCSSTransitionGroup transitionName="css-transition">
+          <ReactCSSTransitionGroup component="div" transitionName="css-transition">
             {results}
           </ReactCSSTransitionGroup>
         </div>

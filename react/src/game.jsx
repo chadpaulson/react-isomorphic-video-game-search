@@ -78,11 +78,11 @@ var Game = React.createClass({
       var related = (
         <div key="game-related" className="game-related">
           <h3>Similar Games</h3>
-          <ul>
-            <ReactCSSTransitionGroup transitionName="css-transition">
+          
+            <ReactCSSTransitionGroup component="ul" transitionName="css-transition">
               {relatedGames}
             </ReactCSSTransitionGroup>
-          </ul>
+          
         </div>)
     } else {
       var related = null
@@ -96,7 +96,7 @@ var Game = React.createClass({
             {related}
           </div>
           <div key="game-image-container" className="game-image-container">
-            <img className="game-image" ref="gameImage" onLoad={this.confirmImageLoad} key="game-image" src={this.state.game.image.medium_url} />
+            <img className="game-image" ref="gameImage" onLoad={this.confirmImageLoad} key="game-image" src={this.state.game.image.medium_url} alt={this.state.game.name} />
           </div>
         </div>
       </DocumentTitle>

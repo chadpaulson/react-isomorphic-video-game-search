@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
       if(err) {
         return next()
       }
-      return res.send(markup.replace('%react-iso-vgs%', reactApp.title.rewind()))
+      return res.send('<!DOCTYPE html>' + markup.replace('%react-iso-vgs%', reactApp.title.rewind()))
     })
   } catch(err) {
     return next()
