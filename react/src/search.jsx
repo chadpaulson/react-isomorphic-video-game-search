@@ -63,7 +63,7 @@ var Search = React.createClass({
 
   handleBlur: function(e) {
     if(this.state.defaultClass != 'search-home') {
-      if(!this.state.searchString.length) {
+      if(this.state.searchString && !this.state.searchString.length) {
         this.setState({
           searchString: this.state.prevSearch,
           defaultClass: 'search-blurred'
@@ -74,7 +74,6 @@ var Search = React.createClass({
         })        
       }
     }
-    this.refs.search.getDOMNode().focus()
   },
 
   stopLoading: function() {
@@ -94,7 +93,7 @@ var Search = React.createClass({
     return (
       <div className={this.state.defaultClass}>
         <form method="get" action="/" className="search-form" onSubmit={this.handleSubmit}>
-          <input placeholder="Super Mario Bros." type="text" ref="search" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
+          <input placeholder="Mario Kart" type="text" ref="search" className="search-input" name="q" onChange={this.handleChange} onClick={this.handleClick} onBlur={this.handleBlur} value={this.state.searchString} />
           {searchContext}
         </form>
       </div>

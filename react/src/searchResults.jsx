@@ -54,15 +54,13 @@ var SearchResults = React.createClass({
       this.state.searchResults.forEach(function(game) {
         if(game.image) {
           var gameURL = '/game/' + game.id + '/' + slug(game.name)
-          results.push(
-            <Link href={gameURL}>
-              <div key={game.id} className="search-result clearfix">
-                <div className="search-image">
-                  <img src={game.image.icon_url} alt={game.name} />
-                </div>
-                <h2 className="search-title">{game.name}</h2>
+          results.push(            
+            <div key={game.id} className="search-result clearfix">
+              <div className="search-image">
+                <Link href={gameURL}><img src={game.image.icon_url} alt={game.name} /></Link>
               </div>
-            </Link>)
+              <h2 className="search-title"><Link href={gameURL}>{game.name}</Link></h2>
+            </div>)
         }
       })
     } else {
