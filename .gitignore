@@ -29,7 +29,7 @@ node_modules
 
 # Transformed JSX
 react/build
-public/js/behavior.js
+public/js/behavior.*js
 
 # Misc
 .DS_Store

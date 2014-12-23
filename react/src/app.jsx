@@ -55,7 +55,7 @@ var App = React.createClass({
           </Locations>
         </CaptureClicks>
         </DocumentTitle>
-        <script type="text/javascript" src="/js/behavior.js"></script>
+        <script type="text/javascript" src="/js/behavior.min.js"></script>
         </body>
       </html>
     )
@@ -73,6 +73,6 @@ module.exports = {
 // Bootstrap client
 if (typeof window !== 'undefined') {
   window.onload = function() {
-    React.render(App(), document)
+    React.render(React.createElement(App), document)
   }
 }
