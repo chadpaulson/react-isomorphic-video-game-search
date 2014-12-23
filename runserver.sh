@@ -1,2 +1,2 @@
-./build.sh
+gulp
 npm start
