@@ -49,8 +49,8 @@ var SearchResults = React.createClass({
   },
 
   render: function() {
-    if(this.state.searchResults.length) {
-      var results = []
+    var results = []
+    if(this.state.searchResults && this.state.searchResults.length) {
       this.state.searchResults.forEach(function(game) {
         if(game.image) {
           var gameURL = '/game/' + game.id + '/' + slug(game.name)
