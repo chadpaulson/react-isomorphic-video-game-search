@@ -26,7 +26,7 @@ Live Demo @ http://react-isomorphic-video-game-search.warppi.pe
 ## Install
 
 ```
-npm install browserify react-tools -g
+sudo npm install gulp browserify react-tools -g
 npm install
 ```
 
