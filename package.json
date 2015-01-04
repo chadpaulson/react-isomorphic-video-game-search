@@ -2,7 +2,7 @@
   "name": "react-isomorphic-video-game-search",
   "description": "An Isomorphic application demo powered by React, reflux, react-router-component, express, superagent and the Giant Bomb API.",
   "author": "Chad Paulson",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "scripts": {
     "start": "node ./bin/www"
@@ -18,7 +18,7 @@
     "react": "^0.12.1",
     "react-async": "^2.0.1",
     "react-document-title": "^0.1.3",
-    "react-router-component": "git://github.com/STRML/react-router-component.git#react-0.12",
+    "react-router-component": "^0.23.2",
     "reflux": "^0.2.0",
     "serve-favicon": "~2.1.3",
     "superagent": "^0.21.0",
