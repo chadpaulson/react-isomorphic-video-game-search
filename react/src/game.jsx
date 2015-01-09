@@ -24,9 +24,7 @@ var Game = React.createClass({
         return cb(null, {
           game: data
         })
-      } catch(err) {
-        console.log(err)
-      }
+      } catch(err) { }
     })
   },
 

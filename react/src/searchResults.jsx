@@ -25,9 +25,7 @@ var SearchResults = React.createClass({
           searchString: data.searchString,
           searchResults: data.searchResults
         })
-      } catch(err) {
-        console.log(err)
-      }
+      } catch(err) { }
     })
   },  
 
