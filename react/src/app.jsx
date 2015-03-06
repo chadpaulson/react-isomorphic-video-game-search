@@ -33,6 +33,14 @@ var App = React.createClass({
     this.refs.router.navigate('/search/' + encodeURI(query))
   },
 
+  scrollTop: function() {
+    if (typeof window !== 'undefined') {
+      if (window.location.href.indexOf("/game/") > -1) {
+        window.scrollTo(0,0)
+      }
+    }
+  },
+
   render: function() {
     return (
       <html>
@@ -48,7 +56,7 @@ var App = React.createClass({
         <Search onSearch={this.searchGames} entryPath={this.state.entryPath} />
         <DocumentTitle title="%react-iso-vgs%">
         <CaptureClicks>
-          <Locations ref="router" path={this.props.path}>
+          <Locations ref="router" path={this.props.path} onNavigation={this.scrollTop}>
             <Location path="/" handler={Home} />
             <Location path="/game/:game_id/:game_slug" handler={Game} />
             <Location path="/search/:query" handler={SearchResults} />
