@@ -1,6 +1,7 @@
 'use strict'
 
 require('node-jsx').install({extension: '.jsx'})
+var React = require('react/addons')
 var reactAsync = require('react-async')
 
 var reactApp = require('./react/src/app.jsx')
@@ -42,9 +43,9 @@ app.get('/api/game/:game_id', function(req, res) {
 app.use(function(req, res, next) {
   if(req.query.q) {
     res.redirect('/search/' + req.query.q)
-  }  
+  }
   try {
-    reactAsync.renderToStringAsync(reactApp.routes({path: req.path}), function(err, markup) {
+    reactAsync.renderToStringAsync(React.createFactory(reactApp.routes)({path: req.path}), function(err, markup) {
       if(err) {
         return next()
       }
