@@ -2,9 +2,7 @@
 
 An Isomorphic application demo powered by [React](https://facebook.github.io/react/), [reflux](https://github.com/spoike/refluxjs), [react-router-component](https://github.com/STRML/react-router-component), [express](http://expressjs.com/), [superagent](https://visionmedia.github.io/superagent/) and the [Giant Bomb API](http://www.giantbomb.com/api/).
 
-[![screenshot](https://github.com/chadpaulson/react-isomorphic-video-game-search/raw/master/screenshot.png)](http://react-isomorphic-video-game-search.warppi.pe)
-
-Live Demo @ http://react-isomorphic-video-game-search.warppi.pe
+![screenshot](https://github.com/chadpaulson/react-isomorphic-video-game-search/raw/master/screenshot.png)
 
 ## Features
 
